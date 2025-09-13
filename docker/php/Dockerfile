@@ -15,23 +15,6 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    unzip \
-    zip \
-    supervisor \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libxml2-dev \
-    locales \
-    build-essential \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install Redis PHP Extension
 RUN pecl install redis \
     && docker-php-ext-enable redis
