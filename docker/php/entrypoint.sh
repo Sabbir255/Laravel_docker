@@ -20,6 +20,10 @@ php artisan migrate --force
 echo "🌱 Seeding database..."
 php artisan db:seed --force
 
+# Ensure storage and bootstrap/cache are writable
+chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+
 
 # Run seeders
 echo "🌱 storage linkup..."
