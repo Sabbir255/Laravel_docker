@@ -3,10 +3,12 @@ version: "3.9"
 services:
   # Laravel App (PHP + Composer + Artisan)
   app:
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
-    container_name: laravel_app
+
+    image: sabbir25500590/laravel-docker:latest
+    # build:
+    #   context: .
+    #   dockerfile: docker/php/Dockerfile
+    # container_name: laravel_app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
