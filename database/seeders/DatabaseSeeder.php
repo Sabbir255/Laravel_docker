@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         if (is_null($admin)) {
             $admin = new User();
             $admin->name = "Sabbir Hossain";
-            $admin->email = "Sabbir@gmail.com";
+            $admin->email = "sabbir@gmail.com";
             $admin->password = Hash::make('password');
             $admin->save();
         }
