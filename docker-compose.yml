@@ -12,8 +12,9 @@ services:
     restart: unless-stopped
     working_dir: /var/www
     volumes:
-     - ./:/var/www        # Mount whole app for development
-     - /var/www/vendor
+    #  - ./:/var/www        # Mount whole app for development
+    #  - /var/www/vendor
+      - storage_file:/var/www/storage/app/public  
     networks:
       - laravel
     depends_on:
@@ -78,3 +79,4 @@ networks:
 
 volumes:
   mysql_data:
+  storage_file:
