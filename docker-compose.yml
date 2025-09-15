@@ -14,7 +14,8 @@ services:
     volumes:
       # - ./:/var/www        # Mount whole app for development
       # - /var/www/vendor
-    - storage_file:/var/www/storage/app/public  
+    # - storage_file:/var/www/storage/app/public  
+    - ./storage/app/public  :/var/www/storage/app/public  
     networks:
       - laravel_blog
     depends_on:
@@ -79,4 +80,4 @@ networks:
 
 volumes:
   mysql_data:
-  storage_file:
+  # storage_file:
