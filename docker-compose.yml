@@ -8,19 +8,19 @@ services:
     # build:
     #   context: .
     #   dockerfile: docker/php/Dockerfile
-    # container_name: laravel_app
+    container_name: laravel_app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
-    #  - ./:/var/www        # Mount whole app for development
-    #  - /var/www/vendor
-      - storage_file:/var/www/storage/app/public  
+      # - ./:/var/www        # Mount whole app for development
+      # - /var/www/vendor
+    - storage_file:/var/www/storage/app/public  
     networks:
-      - laravel
+      - laravel_blog
     depends_on:
       - mysql
       - redis
-   
+        
 
   # Nginx Server
   nginx:
@@ -33,7 +33,7 @@ services:
       - ./:/var/www
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - laravel
+      - laravel_blog
     depends_on:
       - app
 
@@ -50,7 +50,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql 
     networks:
-      - laravel
+      - laravel_blog
 
   # phpMyAdmin
   phpmyadmin:
@@ -63,7 +63,7 @@ services:
     ports:
       - "9090:80"
     networks:
-      - laravel
+      - laravel_blog
 
   # Redis
   redis:
@@ -71,11 +71,11 @@ services:
     container_name: laravel_redis
     restart: unless-stopped 
     networks:
-      - laravel
+      - laravel_blog
 
 networks:
-  laravel:
-   driver: bridge
+  laravel_blog:
+    driver: bridge
 
 volumes:
   mysql_data:
